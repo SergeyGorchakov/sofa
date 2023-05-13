@@ -64,7 +64,7 @@ SOFA_INC_DIR = $(INSTALL_DIR)/include/
 # for functions, CFLAGX for executables) here.
 
 CCOMPC = gcc
-CFLAGF = -c -pedantic -Wall -O
+CFLAGF = -c -pedantic -Wall -O 
 CFLAGX = -pedantic -Wall -O
 
 #----YOU SHOULDN'T HAVE TO MODIFY ANYTHING BELOW THIS LINE---------
@@ -77,7 +77,7 @@ INSTALL_DIRS = $(SOFA_LIB_DIR) $(SOFA_INC_DIR)
 
 # Name the SOFA/C library in its source and target locations.
 
-SOFA_LIB_NAME = libsofa_c.a
+SOFA_LIB_NAME = libsofa_c.so
 SOFA_LIB = $(SOFA_LIB_DIR)$(SOFA_LIB_NAME)
 
 # Name the SOFA/C testbed in its source and target locations.
@@ -387,7 +387,7 @@ $(INSTALL_DIRS):
 
 # Build the library.
 $(SOFA_LIB_NAME): $(SOFA_OBS)
-	ar ru $(SOFA_LIB_NAME) $?
+	gcc -shared -o $(SOFA_LIB_NAME) $? #change to gcc and shared 
 
 # Install the header files.
 $(SOFA_INC) : $(INSTALL_DIRS) $(SOFA_INC_NAMES)
