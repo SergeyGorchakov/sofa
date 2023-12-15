@@ -77,7 +77,7 @@ INSTALL_DIRS = $(SOFA_LIB_DIR) $(SOFA_INC_DIR)
 
 # Name the SOFA/C library in its source and target locations.
 
-SOFA_LIB_NAME = libsofa_c.so
+SOFA_LIB_NAME = libsofa_c.a
 SOFA_LIB = $(SOFA_LIB_DIR)$(SOFA_LIB_NAME)
 
 # Name the SOFA/C testbed in its source and target locations.
@@ -387,7 +387,7 @@ $(INSTALL_DIRS):
 
 # Build the library.
 $(SOFA_LIB_NAME): $(SOFA_OBS)
-	gcc -shared -o $(SOFA_LIB_NAME) $? #change to gcc and shared 
+	ar ru $(SOFA_LIB_NAME) $?
 
 # Install the header files.
 $(SOFA_INC) : $(INSTALL_DIRS) $(SOFA_INC_NAMES)
